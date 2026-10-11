@@ -1,0 +1,37 @@
+MAM - Freeware License
+
+Copyright (c) 2026 arunosaru. All rights reserved.
+
+MAM ("the Software") is free of charge. By installing or using it you accept these terms.
+
+1. Use
+   You may install and use the Software on any number of computers, for private and for commercial work,
+   at no cost.
+
+2. Your work
+   Everything you create, organize or export with the Software - assets, scenes, materials, renders, USD files -
+   belongs to you. The Software claims no rights to it.
+
+3. What is not allowed without written permission
+   - selling, renting or lending the Software, or bundling it with something that is sold;
+   - passing on copies of the Software or offering it for download anywhere other than its official release page
+     (https://github.com/arunosaru/mam/releases) - point people there instead, so they get the current version;
+   - modifying, decompiling or reverse engineering the Software, except where the law allows it regardless
+     of this license.
+
+4. Third-party software
+   The Software includes open-source components (Python, Pixar USD, OpenCV, pywebview, Vue and others). Their own
+   licenses, listed in THIRD_PARTY_NOTICES.txt, apply to those components and take precedence over these terms
+   for them.
+
+5. No warranty
+   The Software is provided "as is", without warranty of any kind, express or implied, including fitness for a
+   particular purpose. Keep backups of your library: the Software moves, renames and deletes files when asked to.
+
+6. Limitation of liability
+   To the extent permitted by law, the author is not liable for any damage arising from the use of or the
+   inability to use the Software, including loss of data, work or profit. Mandatory statutory liability
+   (for example for intent or gross negligence) remains unaffected.
+
+7. Changes
+   Newer versions may come with changed terms; the terms shipped with a version apply to that version.
