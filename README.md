@@ -1,162 +1,158 @@
 # MAM – Asset Manager
 
-MAM ist eine Desktop-App, mit der du deine 3D-Asset-Bibliothek durchsuchst, verschlagwortest und direkt an
-**Houdini, Blender und Maya** schickst (dazu **Unreal, Unity und Godot**). Die Bibliothek liegt in einem
-lokalen Ordner oder auf einem NAS: Modelle, Texturen, HDRIs, Gobos, HDAs und Sounds. Megascans, Fab und Poly
-Haven stehen in eigenen Bereichen daneben. MAM läuft unter Windows, macOS und Linux.
+MAM is a desktop app to browse and tag your 3D asset library and send assets straight to **Houdini, Blender and
+Maya** (and to **Unreal, Unity and Godot**). The library lives in a local folder or on a NAS: models, textures,
+HDRIs, gobos, HDAs and sounds. Megascans, Fab and Poly Haven sit next to it in sections of their own. MAM runs on
+Windows, macOS and Linux.
 
-Dieses Repository enthält nur die Downloads. Den Quellcode gibt es hier nicht.
+This repository holds the downloads only. The source code is not published here.
 
 ## Download
 
-Die neueste Version steht unter **[Releases](https://github.com/arunosaru/mam/releases/latest)**:
+The newest version is under **[Releases](https://github.com/arunosaru/mam/releases/latest)**:
 
-| System | Datei |
+| System | File |
 |---|---|
-| Windows (Installer, empfohlen) | `MAM-<Version>-windows-setup.exe` |
-| Windows (portabel) | `MAM-<Version>-windows-x64.zip` |
-| Mac (Apple Silicon) | `MAM-<Version>-macos-arm64.dmg` |
-| Linux | `MAM-<Version>-linux-x64.tar.gz` |
+| Windows (installer, recommended) | `MAM-<version>-windows-setup.exe` |
+| Windows (portable) | `MAM-<version>-windows-x64.zip` |
+| Mac (Apple Silicon) | `MAM-<version>-macos-arm64.dmg` |
+| Linux | `MAM-<version>-linux-x64.tar.gz` |
 
-Nicht jedes Release bringt eine Datei für jedes System mit. Steht dein System nicht dabei, nimm das letzte
-Release, in dem es eine gibt.
+Not every release has a file for every system. If yours is missing, take the latest release that has one.
 
-## Installieren
+## Install
 
-- **Windows:** Den Setup ausführen. Er braucht keine Adminrechte und installiert nach
-  `%LOCALAPPDATA%\Programs\MAM`, sodass MAM sich danach selbst aktualisieren kann. Alternativ die .zip irgendwo
-  entpacken und `MAM.exe` starten. Warnt SmartScreen, auf *Weitere Informationen → Trotzdem ausführen* klicken.
-  Gebraucht wird die *Microsoft Edge WebView2 Runtime*, die bei Windows 10/11 meist schon installiert ist.
-- **Mac:** Die .dmg öffnen und *MAM* auf *Programme* ziehen. Meldet macOS beim ersten Start, dass es die App
-  nicht prüfen kann: *Systemeinstellungen → Datenschutz & Sicherheit → Trotzdem öffnen*.
-- **Linux:** Entpacken und `MAM/MAM` starten. Gebraucht wird WebKitGTK
-  (Ubuntu/Debian: `sudo apt install gir1.2-webkit2-4.1`).
+- **Windows:** Run the setup. It needs no admin rights and installs into `%LOCALAPPDATA%\Programs\MAM`, so MAM can
+  update itself later. Or unpack the .zip anywhere and start `MAM.exe`. If SmartScreen warns, click
+  *More info → Run anyway*. MAM needs the *Microsoft Edge WebView2 Runtime*, which Windows 10/11 usually has already.
+- **Mac:** Open the .dmg and drag *MAM* onto *Applications*. If macOS says on the first start that it cannot check
+  the app: *System Settings → Privacy & Security → Open Anyway*.
+- **Linux:** Unpack and start `MAM/MAM`. MAM needs WebKitGTK (Ubuntu/Debian: `sudo apt install gir1.2-webkit2-4.1`).
 
-Beim ersten Start fragt MAM nach dem Bibliotheksordner. Wird eine Megascans-Library gefunden, schlägt MAM auch
-diese vor. Alles andere lässt sich später in den Einstellungen setzen (Strg+, bzw. ⌘,).
+On its first start MAM asks for your library folder. If it finds a Megascans library, it suggests that one too.
+Everything else can be set later in the settings (Ctrl+, or ⌘,).
 
 ## Updates
 
-MAM sucht beim Start nach einer neuen Version. *Update* lädt sie herunter, prüft sie, und *Restart now*
-tauscht sie aus und startet neu. Einstellungen, Bibliothek und Projekte bleiben dabei erhalten. Hat sich das
-Houdini-, Blender- oder Maya-Addon geändert, installiere es unter *Settings → Programs* erneut.
+MAM looks for a new version when it starts. *Update* downloads and checks it, *Restart now* swaps it in and starts
+again. Settings, library and projects stay as they are. If the Houdini, Blender or Maya addon changed, install it
+again in *Settings → Programs*.
 
-## Funktionen
+## Features
 
-### Bibliothek
+### Library
 
-- **Ordner bleiben, wie sie sind:** Jedes Asset ist ein Ordner in deiner Bibliothek, gegliedert nach Kategorien
-  und Unterkategorien. MAM legt nur eine kleine `metadata.json` mit den Tags dazu.
-- **Mehrere Pfade:** Dieselbe Bibliothek lässt sich unter verschiedenen Laufwerksbuchstaben oder Mounts eintragen
-  (z. B. `Z:\01_Assets` und `/Volumes/nas/01_Assets`). MAM nimmt den ersten Pfad, der auf diesem Rechner erreichbar ist.
-- **Schnell auch auf dem NAS:** Das Fenster öffnet sofort, die Bibliothek wird im Hintergrund abgeglichen.
-  Während des Scans erscheint schon, was gelesen ist. Ist das NAS nicht erreichbar, bleibt der letzte Stand sichtbar.
-- **Suche:** Strg+K durchsucht alles (Assets, Kategorien, Befehle), Strg+F filtert die Ansicht nach Name und Tags.
-  Der Farbkreis neben dem Suchfeld filtert nach der Hauptfarbe des Vorschaubilds.
-- **Tags, Favoriten, Umbenennen, Verschieben, Löschen**, auch für mehrere Assets auf einmal. Gelöschtes landet im
-  Papierkorb, und Strg+Z macht Löschen, Umbenennen und Verschieben rückgängig.
-- **Import** per Drag & Drop oder Strg+I: Ordner, Zip-Dateien (werden entpackt), HDR/EXR-Dateien und ganze
-  HDRI-Ordner. Was schon in der Bibliothek liegt, wird erkannt und nicht doppelt importiert.
-- **Nicht erfasste Ordner:** *Import → Unregistered folders* findet Ordner in den Kategorien, die noch kein Asset
-  sind, und nimmt sie mit einem Klick auf.
-- **Needs attention** listet Assets ohne Vorschaubild oder ohne Tags.
-- **Quelle und Lizenz** lassen sich pro Asset festhalten. Bei einschränkenden Lizenzen weist MAM darauf hin,
-  sobald du das Asset einem Projekt zuordnest.
+- **Folders stay as they are:** Every asset is a folder in your library, organised in categories and
+  subcategories. MAM only adds a small `metadata.json` with the tags.
+- **Several paths:** The same library can be entered under different drive letters or mounts (e.g. `Z:\01_Assets`
+  and `/Volumes/nas/01_Assets`). MAM uses the first path that is reachable on this computer.
+- **Fast on a NAS too:** The window opens at once, the library is brought up to date in the background. What has
+  been read shows while the scan goes on. If the NAS is not reachable, the last known state stays visible.
+- **Search:** Ctrl+K searches everything (assets, categories, commands), Ctrl+F filters the view by name and tags.
+  The colour wheel next to the search field filters by the main colour of the thumbnail.
+- **Tags, favourites, rename, move, delete** – also for many assets at once. Deleted assets go to the trash, and
+  Ctrl+Z undoes deleting, renaming and moving.
+- **Import** by drag and drop or Ctrl+I: folders, zip files (unpacked), HDR/EXR files and whole HDRI folders.
+  Assets already in the library are recognised and not imported twice.
+- **Unregistered folders:** *Import → Unregistered folders* finds folders in the categories that are no asset yet
+  and adds them with one click.
+- **Needs attention** lists assets without a thumbnail or without tags.
+- **Source and license** can be noted per asset. For restrictive licenses MAM gives a hint as soon as you add the
+  asset to a project.
 
-### Vorschaubilder
+### Thumbnails
 
-- **Bild einfügen:** Ein Screenshot in der Zwischenablage wird mit Strg+V zum Vorschaubild.
-- **Videos und Bildsequenzen** als Vorschau: Die Kachel spielt sie ab, solange die Maus darauf liegt.
-  *Set thumbnail …* macht aus einem Video oder einer Sequenz eine kleine, loopende Vorschau.
-- **Ohne Bild:** MAM zeigt das Vorschaubild aus der .blend-Datei. *Render thumbnail* rendert mit Blender
-  im Hintergrund ein richtiges Vorschaubild, auch für mehrere Assets auf einmal.
-- **HDRIs** werden selbst gerendert, wenn sie kein eigenes Vorschaubild haben.
+- **Paste a picture:** A screenshot in the clipboard becomes the thumbnail with Ctrl+V.
+- **Videos and image sequences** as previews: the tile plays them while the mouse is on it. *Set thumbnail …*
+  turns a video or a sequence into a small looping preview.
+- **Without a picture:** MAM shows the preview stored in the .blend file. *Render thumbnail* renders a proper
+  thumbnail with Blender in the background, also for many assets at once.
+- **HDRIs** are rendered by MAM itself when they have no thumbnail of their own.
 
-### Senden an Houdini, Blender und Maya
+### Send to Houdini, Blender and Maya
 
-- **Ein Klick:** Modell, Maps oder HDRI aus dem Detail-Panel ins offene Programm schicken.
-  Die Addons installierst du unter *Settings → Programs*.
-- **Fertiges Material:** Aus den Maps wird automatisch ein Material, das gleich auf dem Modell liegt.
-  Die Rolle jeder Map erkennt MAM am Dateinamen (Albedo, Normal, Roughness, Metallic, Displacement, Opacity, AO …).
-- **Renderer wählbar:**
-  - Houdini: Karma (MaterialX) oder Redshift
-  - Maya: Arnold oder Redshift
+- **One click:** Send a model, maps or an HDRI from the details panel into the open program.
+  Install the addons in *Settings → Programs*.
+- **A finished material:** The maps become a material that is already on the model. MAM recognises the role of
+  each map by its file name (albedo, normal, roughness, metallic, displacement, opacity, AO …).
+- **Choice of renderer:**
+  - Houdini: Karma (MaterialX) or Redshift
+  - Maya: Arnold or Redshift
   - Blender: Cycles / EEVEE
-- **Mehrere Materialien:** Bringt ein Modell mehrere Texture-Sets mit, wird jedes ein eigenes Material auf seinem
-  Material-Slot.
-- **Gepackte Maps** (ORM, ARM, MRAO, Unity Mask Map, Base Color mit Alpha) werden gelesen. *Pack channels* packt
-  einzelne Maps zu solchen Dateien zusammen.
-- **LODs, Auflösungen und UDIMs:** LOD und Auflösung lassen sich im Panel umschalten. UDIM-Kacheln sind eine Map.
-- **Mehrere Instanzen:** Sind zwei Houdinis (oder Mayas, Blenders) offen, fragt MAM, an welche Szene es gehen soll.
-- **HDAs:** Houdini Digital Assets zeigen Typ, Kontext und Version und werden beim Senden installiert und als Node
-  angelegt. Alle HDAs der Bibliothek stehen auf Wunsch direkt in Houdinis Tab-Menü.
-- **Gobos:** Licht-Schablonen werden als projizierendes Spotlight gesendet, auch als animierte Bildsequenz.
-- **USD-Assets:** *Files → USD asset* macht aus einem Asset ein eigenständiges USD mit MaterialX-Material,
-  LOD- und Varianten-Sets und leichtem Proxy für den Viewport.
+- **Several materials:** If a model comes with several texture sets, each becomes a material of its own on its
+  material slot.
+- **Packed maps** (ORM, ARM, MRAO, Unity mask map, base color with alpha) are read. *Pack channels* packs single
+  maps into such files.
+- **LODs, resolutions and UDIMs:** LOD and resolution can be switched in the panel. UDIM tiles count as one map.
+- **Several instances:** If two Houdinis (or Mayas, Blenders) are open, MAM asks which scene to send to.
+- **HDAs:** Houdini Digital Assets show their type, context and version and are installed and created as a node
+  when sent. On request, every HDA of the library is right in Houdini's Tab menu.
+- **Gobos:** Light templates are sent as a projecting spotlight, also as an animated image sequence.
+- **USD assets:** *Files → USD asset* turns an asset into a self-contained USD with a MaterialX material, LOD and
+  variant sets and a light proxy for the viewport.
 
-### Megascans, Fab und Poly Haven
+### Megascans, Fab and Poly Haven
 
-- **Megascans:** Die Megascans-Library von Bridge erscheint als eigener Bereich, sortiert nach Typ und Kategorie
-  wie in Bridge. Nichts wird kopiert.
-- **Fab:** Downloads aus Fab stehen im selben Bereich. Megascans-Assets aus Fab werden einsortiert wie die aus Bridge,
-  Assets anderer Verkäufer stehen unter *Fab*. Der graue Hintergrund der Fab-Bilder wird freigestellt.
-- **Poly Haven:** Der ganze freie Katalog (HDRIs, Texturen, Modelle, alle CC0) ist durchsuchbar.
-  *Download* lädt in einen eigenen Ordner, und weitere Auflösungen kommen dazu, statt die vorige zu ersetzen.
-- **Übernehmen:** *Copy to my library* übernimmt ein Asset aus diesen Bereichen in die eigene Bibliothek.
+- **Megascans:** Bridge's Megascans library is a section of its own, sorted by type and category like in Bridge.
+  Nothing is copied.
+- **Fab:** Downloads from Fab are in the same section. Megascans assets from Fab are sorted in like those from
+  Bridge, assets of other sellers are under *Fab*. The grey background of Fab pictures is cut out.
+- **Poly Haven:** The whole free catalogue (HDRIs, textures, models, all CC0) can be browsed. *Download* saves into
+  a folder of its own, and further resolutions are added instead of replacing the one before.
+- **Take over:** *Copy to my library* copies an asset from these sections into your own library.
 
-### Projekte
+### Projects
 
-- **Verschachtelt:** Projekte lassen sich beliebig verschachteln (z. B. Studium → Semester → Fach → Abgabe),
-  mit Frist und Countdown, Notizen, Cover und eigenem Projektordner.
-- **Assets zuordnen** mit Strg+P. Sie bleiben dabei an ihrem Platz in der Bibliothek.
-- **Szenen:** Alle Szenen aus dem Projektordner (Blender, Houdini, Maya, C4D, 3ds Max, Nuke, Substance Painter,
-  ZBrush) erscheinen nach Programm gruppiert, mit zusammengefassten Versionen.
-- **Renders:** Bilder, Playblasts und Bildsequenzen laufen als Flipbook. *Compare* stellt zwei Versionen mit
-  Schieberegler nebeneinander.
-- **Referenz-Board:** Eine freie Pinnwand pro Projekt wie PureRef, für Bilder per Drag & Drop oder Strg+V
-  und für Notizen.
-- **Abgabe:** *Credits* listet alle Assets mit Quelle und Lizenz. *Zip* packt das Projekt für die Abgabe,
-  wahlweise mit den verwendeten Assets und einer `CREDITS.txt`.
+- **Nested:** Projects can be nested as deep as you like (e.g. studies → semester → course → assignment), with a
+  due date and countdown, notes, a cover and a project folder of their own.
+- **Add assets** with Ctrl+P. They stay where they are in the library.
+- **Scenes:** All scenes in the project folder (Blender, Houdini, Maya, C4D, 3ds Max, Nuke, Substance Painter,
+  ZBrush) show grouped by program, with their versions together.
+- **Renders:** Pictures, playblasts and image sequences play as a flipbook. *Compare* puts two versions side by
+  side with a slider.
+- **Reference board:** A free pin board per project like PureRef, for pictures by drag and drop or Ctrl+V, and
+  for notes.
+- **Hand-in:** *Credits* lists every asset with its source and license. *Zip* packs the project for handing it
+  in, optionally with the assets used and a `CREDITS.txt`.
 
 ### Sounds
 
-- **Sound-Bibliothek:** Eine Kategorie *Sounds* (oder *Audio*, *SFX*) wird als Sound-Bibliothek gezeigt
-  (WAV, AIFF, FLAC, MP3, OGG). Gruppiert wird nach UCS-Kategorie und Pack, mit Wellenform und Player.
-- **Ausschnitt speichern:** Einen Bereich der Wellenform markieren, anhören und als WAV speichern.
+- **Sound library:** A category *Sounds* (or *Audio*, *SFX*) is shown as a sound library (WAV, AIFF, FLAC, MP3,
+  OGG), grouped by UCS category and pack, with waveform and player.
+- **Save a part:** Mark a range of the waveform, listen to it and save it as a WAV.
 
-### Ordnung und Sicherheit
+### Order and safety
 
-- **Speicherplatz:** Zeigt, was Bibliothek, Megascans, Projekte und Cache belegen.
-- **Aufräumen:** Schlägt alte Szenenversionen, Backup-Dateien und alte Sim-Caches vor.
-  Alles wandert erst in einen Papierkorb.
-- **Backup:** Kopiert neue und geänderte Dateien aus Bibliothek und Projekten auf eine andere Platte.
-  Im Backup wird nie etwas gelöscht.
+- **Storage:** Shows what the library, Megascans, projects and the cache take.
+- **Clean up:** Suggests old scene versions, backup files and old sim caches. Everything goes to a trash first.
+- **Backup:** Copies new and changed files of the library and the projects to another drive. Nothing is ever
+  deleted in the backup.
 
-## Tastenkürzel
+## Shortcuts
 
-Unter Windows und Linux Strg, auf dem Mac ⌘. `?` zeigt alle Kürzel in der App.
+Ctrl on Windows and Linux, ⌘ on the Mac. `?` shows every shortcut in the app.
 
-| Kürzel | Aktion |
+| Shortcut | Action |
 |---|---|
-| Klick / ↩ | Detail-Panel öffnen |
-| Leertaste | Schnellvorschau |
-| Strg+K | Alles durchsuchen |
-| Strg+F | Ansicht filtern |
-| Strg+D | Favorit an/aus |
-| Strg+P | Zu einem Projekt hinzufügen |
-| Strg+V | Bild als Vorschaubild einfügen |
-| F2 | Umbenennen |
-| Entf / ⌫ | In den Papierkorb |
-| Strg+Z | Rückgängig |
-| Strg+I | Import |
-| Strg+R | Bibliothek neu einlesen |
-| Strg+ + / – | Kachelgröße |
-| Strg+, | Einstellungen |
+| Click / ↩ | Open the details panel |
+| Space | Quick preview |
+| Ctrl+K | Search everything |
+| Ctrl+F | Filter the view |
+| Ctrl+D | Favourite on/off |
+| Ctrl+P | Add to a project |
+| Ctrl+V | Paste a picture as thumbnail |
+| F2 | Rename |
+| Del / ⌫ | Move to trash |
+| Ctrl+Z | Undo |
+| Ctrl+I | Import |
+| Ctrl+R | Read the library again |
+| Ctrl+ + / – | Tile size |
+| Ctrl+, | Settings |
 
-## Hilfe bei Problemen
+## Help with problems
 
-*Settings → Programs → Show log file* öffnet das Protokoll der App. Häng es an jede Fehlermeldung an.
+*Settings → Programs → Show log file* opens the app's log. Please attach it to every bug report.
 
-## Lizenz
+## License
 
-Siehe [LICENSE.txt](LICENSE.txt).
+See [LICENSE.txt](LICENSE.txt).
