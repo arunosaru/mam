@@ -27,7 +27,45 @@ Not every release has a file for every system. If yours is missing, take the lat
   *More info → Run anyway*. MAM needs the *Microsoft Edge WebView2 Runtime*, which Windows 10/11 usually has already.
 - **Mac:** Open the .dmg and drag *MAM* onto *Applications*. If macOS says on the first start that it cannot check
   the app: *System Settings → Privacy & Security → Open Anyway*.
-- **Linux:** Unpack and start `MAM/MAM`. MAM needs WebKitGTK (Ubuntu/Debian: `sudo apt install gir1.2-webkit2-4.1`).
+- **Linux:** see *Linux – step by step* below.
+
+### Linux – step by step
+Nothing else has to be installed: everything MAM needs comes with it.
+
+1. **Download** the file `MAM-…-linux-x64.tar.gz` (in the release under *Assets*, click it). It lands in
+   your *Downloads* folder.
+2. **Open a terminal:** open the app menu, type *Terminal* and start it.
+3. **Copy the whole grey box below**, paste it into the terminal (*Ctrl+Shift+V*) and press *Enter*:
+
+   ```bash
+   f=$(ls -t ~/Downloads/MAM-*-linux-x64.tar.gz "$(xdg-user-dir DOWNLOAD 2>/dev/null)"/MAM-*-linux-x64.tar.gz 2>/dev/null | head -n 1)
+   if [ -z "$f" ]; then echo "Not found: download MAM-...-linux-x64.tar.gz first (step 1)."; else
+   mkdir -p ~/.local/opt ~/.local/bin ~/.local/share/applications
+   rm -rf ~/.local/opt/MAM
+   tar xzf "$f" -C ~/.local/opt
+   ln -sf ~/.local/opt/MAM/MAM ~/.local/bin/mam
+   cat > ~/.local/share/applications/mam.desktop <<EOF
+   [Desktop Entry]
+   Type=Application
+   Name=MAM
+   GenericName=Asset Manager
+   Exec=$HOME/.local/opt/MAM/MAM
+   Path=$HOME/.local/opt/MAM
+   Icon=folder-pictures
+   Terminal=false
+   Categories=Graphics;3DGraphics;
+   StartupWMClass=MAM
+   EOF
+   echo "MAM is installed - find it in the app menu."
+   fi
+   ```
+
+4. **Done.** Start MAM from the app menu (type *MAM*). On the first start it asks for your library folder.
+
+- **Update:** MAM updates itself (*Update → Restart now*). Doing the steps again with a newer file works too.
+- **Remove:** `rm -rf ~/.local/opt/MAM ~/.local/bin/mam ~/.local/share/applications/mam.desktop`
+- **It does not start?** Type `~/.local/opt/MAM/MAM` in a terminal and press *Enter*: what it prints says what
+  is wrong. Please send that along, and the log from `~/.local/state/AssetManager/logs`.
 
 On its first start MAM asks for your library folder. If it finds a Megascans library, it suggests that one too.
 Everything else can be set later in the settings (Ctrl+, or ⌘,).
