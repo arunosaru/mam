@@ -1,9 +1,9 @@
 # MAM – Asset Manager
 
 MAM is a desktop app to browse and tag your 3D asset library and send assets straight to **Houdini, Blender and
-Maya** (and to **Unreal, Unity and Godot**). The library lives in a local folder or on a NAS: models, textures,
-HDRIs, gobos, HDAs and sounds. Megascans, Fab and Poly Haven sit next to it in sections of their own. MAM runs on
-Windows, macOS and Linux.
+Maya** (and to **ZBrush, Unreal, Unity and Godot**). The library lives in a local folder or on a NAS: models,
+textures, HDRIs, gobos, HDAs, ZBrush brushes and alphas, and sounds. Megascans, Fab, Poly Haven and ambientCG sit
+next to it in sections of their own. MAM runs on Windows, macOS and Linux.
 
 This repository holds the downloads only. The source code is not published here.
 
@@ -90,8 +90,9 @@ again in *Settings → Programs*.
   The colour wheel next to the search field filters by the main colour of the thumbnail.
 - **Tags, favourites, rename, move, delete** – also for many assets at once. Deleted assets go to the trash, and
   Ctrl+Z undoes deleting, renaming and moving.
-- **Import** by drag and drop or Ctrl+I: folders, zip files (unpacked), HDR/EXR files and whole HDRI folders.
-  Assets already in the library are recognised and not imported twice.
+- **Import** by drag and drop or Ctrl+I: folders, zip files (unpacked), HDR/EXR files and whole HDRI folders,
+  ZBrush brushes and alphas. Assets already in the library are recognised and not imported twice. Megascans and
+  Fab assets are sorted into your own categories (e.g. *3D_Models*); which ones can be chosen in the settings.
 - **Unregistered folders:** *Import → Unregistered folders* finds folders in the categories that are no asset yet
   and adds them with one click.
 - **Needs attention** lists assets without a thumbnail or without tags.
@@ -106,13 +107,16 @@ again in *Settings → Programs*.
 - **Without a picture:** MAM shows the preview stored in the .blend file. *Render thumbnail* renders a proper
   thumbnail with Blender in the background, also for many assets at once.
 - **HDRIs** are rendered by MAM itself when they have no thumbnail of their own.
+- **ZBrush alphas and brushes** get a small WebP preview next to them once (brushes show their own icon on a
+  transparent ground), so a tile never reads the big TIF or PSD again.
 
 ### Send to Houdini, Blender and Maya
 
 - **One click:** Send a model, maps or an HDRI from the details panel into the open program.
   Install the addons in *Settings → Programs*.
 - **A finished material:** The maps become a material that is already on the model. MAM recognises the role of
-  each map by its file name (albedo, normal, roughness, metallic, displacement, opacity, AO …).
+  each map by its file name (albedo, normal, roughness, metallic, displacement, opacity, AO …). Specular and
+  cavity maps set how much the material reflects; a bump map can be added on top of the normal map (Settings).
 - **Choice of renderer:**
   - Houdini: Karma (MaterialX) or Redshift
   - Maya: Arnold or Redshift
@@ -127,16 +131,23 @@ again in *Settings → Programs*.
   when sent. On request, every HDA of the library is right in Houdini's Tab menu.
 - **Gobos:** Light templates are sent as a projecting spotlight, also as an animated image sequence.
 - **USD assets:** *Files → USD asset* turns an asset into a self-contained USD with a MaterialX material, LOD and
-  variant sets and a light proxy for the viewport.
+  variant sets and a light proxy for the viewport. For plants, the ticked variations go into one USD.
+- **Paths that travel:** *Set variables in Houdini / Maya* (Settings → Programs) makes the paths of sent assets
+  start with `$MAM_LIBRARY` (and `$MAM_MEGASCANS` …), set to this computer's folders. The scene then opens on
+  every computer – Mac, Windows, Linux – and after the project was moved. Houdini can also use `$JOB` or `$HIP`.
+- **ZBrush:** Brushes (.ZBP) and alphas are sent into ZBrush's LightBox, in folders named like their categories.
+  Alphas in other formats (TIF, PNG, 32 bit) go in as a 16 bit PSD, so ZBrush reads them as alphas.
 
-### Megascans, Fab and Poly Haven
+### Megascans, Fab, Poly Haven and ambientCG
 
 - **Megascans:** Bridge's Megascans library is a section of its own, sorted by type and category like in Bridge.
   Nothing is copied.
 - **Fab:** Downloads from Fab are in the same section. Megascans assets from Fab are sorted in like those from
-  Bridge, assets of other sellers are under *Fab*. The grey background of Fab pictures is cut out.
-- **Poly Haven:** The whole free catalogue (HDRIs, textures, models, all CC0) can be browsed. *Download* saves into
-  a folder of its own, and further resolutions are added instead of replacing the one before.
+  Bridge, assets of other sellers are under *Fab*. The grey background of Fab pictures is cut out; a download
+  without a preview gets its picture from fab.com.
+- **Poly Haven and ambientCG:** Both free catalogues (HDRIs, textures, models, all CC0) can be browsed.
+  *Download* saves into a folder of their own, and further resolutions are added instead of replacing the one
+  before. Under *Files* you tick which maps you want.
 - **Take over:** *Copy to my library* copies an asset from these sections into your own library.
 
 ### Projects
@@ -164,7 +175,9 @@ again in *Settings → Programs*.
 - **Storage:** Shows what the library, Megascans, projects and the cache take.
 - **Clean up:** Suggests old scene versions, backup files and old sim caches. Everything goes to a trash first.
 - **Backup:** Copies new and changed files of the library and the projects to another drive. Nothing is ever
-  deleted in the backup.
+  deleted in the backup. Before it starts you tick which folders go in (e.g. leave out big sound packs).
+- **Cloud backup:** The same straight into S3-compatible storage – Backblaze B2, Wasabi, Cloudflare R2, AWS S3,
+  Synology C2 … – without a copy on your drive first. The secret key stays in the system's keychain.
 
 ## Shortcuts
 
