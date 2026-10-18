@@ -82,6 +82,10 @@ again in *Settings → Programs*.
 
 - **Folders stay as they are:** Every asset is a folder in your library, organised in categories and
   subcategories. MAM only adds a small `metadata.json` with the tags.
+- **Drives by name:** Folders on other drives (projects, Megascans, Fab, boards) are kept by the drive's name, so
+  they open on Mac (`/Volumes/<name>`), Windows (the drive's label) and Linux (`/media/<user>/<name>`) alike.
+- **Settings to another computer:** *Settings → Programs → Export settings* writes everything set into a file;
+  *Import settings* takes it over on another computer. The cloud secret key stays in the keychain.
 - **Several paths:** The same library can be entered under different drive letters or mounts (e.g. `Z:\01_Assets`
   and `/Volumes/nas/01_Assets`). MAM uses the first path that is reachable on this computer.
 - **Fast on a NAS too:** The window opens at once, the library is brought up to date in the background. What has
@@ -93,6 +97,10 @@ again in *Settings → Programs*.
 - **Import** by drag and drop or Ctrl+I: folders, zip files (unpacked), HDR/EXR files and whole HDRI folders,
   ZBrush brushes and alphas. Assets already in the library are recognised and not imported twice. Megascans and
   Fab assets are sorted into your own categories (e.g. *3D_Models*); which ones can be chosen in the settings.
+- **Loose files:** A model, its maps or a scene dragged in on their own become a new asset folder, sorted like
+  *Settings → File types* (`fbx/`, `textures/`, `render/` …). A thumbnail or render picture dropped along comes too.
+- **Categories from folders:** *Settings → Categories → From folders* shows the library's folders as a tree; the
+  ticked ones become categories.
 - **Unregistered folders:** *Import → Unregistered folders* finds folders in the categories that are no asset yet
   and adds them with one click.
 - **Needs attention** lists assets without a thumbnail or without tags.
@@ -101,6 +109,8 @@ again in *Settings → Programs*.
 
 ### Thumbnails
 
+- **Always a thumbnail:** Asset folders without one get a `thumbnail.webp` – from a render picture, a photo or the
+  base colour of the maps.
 - **Paste a picture:** A screenshot in the clipboard becomes the thumbnail with Ctrl+V.
 - **Videos and image sequences** as previews: the tile plays them while the mouse is on it. *Set thumbnail …*
   turns a video or a sequence into a small looping preview.
@@ -109,6 +119,13 @@ again in *Settings → Programs*.
 - **HDRIs** are rendered by MAM itself when they have no thumbnail of their own.
 - **ZBrush alphas and brushes** get a small WebP preview next to them once (brushes show their own icon on a
   transparent ground), so a tile never reads the big TIF or PSD again.
+
+### 3D view
+
+- **Look at the model:** The *3D* button on the picture in the details panel shows the model – FBX, OBJ, glTF/GLB
+  or USD – with its maps (base colour, normal, roughness, metal, AO, opacity; packed maps too). Drag to turn,
+  scroll to zoom, *Wire* shows the mesh.
+- **Every model:** It shows the model ticked in *Files*; a list in the view holds all variations and LODs.
 
 ### Send to Houdini, Blender and Maya
 
@@ -157,7 +174,8 @@ again in *Settings → Programs*.
 - **Add assets** with Ctrl+P. They stay where they are in the library.
 - **Scenes:** All scenes in the project folder (Blender, Houdini, Maya, C4D, 3ds Max, Nuke, Substance Painter,
   ZBrush) show grouped by program, with their versions together.
-- **Renders:** Pictures, playblasts and image sequences play as a flipbook. *Compare* puts two versions side by
+- **Renders:** Pictures, playblasts and image sequences (also numbered without leading zeros, like Houdini's
+  `$F`) play as a flipbook. *Compare* puts two versions side by
   side with a slider.
 - **Reference board:** A free pin board per project like PureRef, for pictures by drag and drop or Ctrl+V, and
   for notes.
@@ -173,7 +191,8 @@ again in *Settings → Programs*.
 ### Order and safety
 
 - **Storage:** Shows what the library, Megascans, projects and the cache take.
-- **Clean up:** Suggests old scene versions, backup files and old sim caches. Everything goes to a trash first.
+- **Clean up:** Suggests old scene versions, backup files, old sim caches and texture caches (`.tx`, `.rat`,
+  `.rstexbin`) next to their texture. Everything goes to a trash first.
 - **Backup:** Copies new and changed files of the library and the projects to another drive. Nothing is ever
   deleted in the backup. Before it starts you tick which folders go in (e.g. leave out big sound packs).
 - **Cloud backup:** The same straight into S3-compatible storage – Backblaze B2, Wasabi, Cloudflare R2, AWS S3,
