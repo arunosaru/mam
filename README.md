@@ -126,6 +126,7 @@ again in *Settings → Programs*.
   or USD – with its maps (base colour, normal, roughness, metal, AO, opacity; packed maps too). Drag to turn,
   scroll to zoom, *Wire* shows the mesh.
 - **Every model:** It shows the model ticked in *Files*; a list in the view holds all variations and LODs.
+  A plant's USD shows all its variations in a row, or one chosen in the list.
 
 ### Send to Houdini, Blender and Maya
 
@@ -148,7 +149,8 @@ again in *Settings → Programs*.
   when sent. On request, every HDA of the library is right in Houdini's Tab menu.
 - **Gobos:** Light templates are sent as a projecting spotlight, also as an animated image sequence.
 - **USD assets:** *Files → USD asset* turns an asset into a self-contained USD with a MaterialX material, LOD and
-  variant sets and a light proxy for the viewport. For plants, the ticked variations go into one USD.
+  variant sets and a light proxy for the viewport. For plants, the ticked variations go into one USD; sent to
+  Houdini, every variation stands side by side as a prim of its own.
 - **Paths that travel:** *Set variables in Houdini / Maya* (Settings → Programs) makes the paths of sent assets
   start with `$MAM_LIBRARY` (and `$MAM_MEGASCANS` …), set to this computer's folders. The scene then opens on
   every computer – Mac, Windows, Linux – and after the project was moved. Houdini can also use `$JOB` or `$HIP`.
