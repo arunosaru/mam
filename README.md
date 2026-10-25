@@ -99,7 +99,7 @@ again in *Settings → Programs*.
 - **Tags, favourites, rename, move, delete** – also for many assets at once. Deleted assets go to the trash, and
   Ctrl+Z undoes deleting, renaming and moving.
 - **Import** by drag and drop or Ctrl+I: folders, zip files (unpacked), HDR/EXR files and whole HDRI folders,
-  ZBrush brushes and alphas. Assets already in the library are recognised and not imported twice. Megascans and
+  ZBrush brushes and alphas, gobos and IES light profiles (also whole packs). Assets already in the library are recognised and not imported twice. Megascans and
   Fab assets are sorted into your own categories (e.g. *3D_Models*); which ones can be chosen in the settings.
 - **Loose files:** A model, its maps or a scene dragged in on their own become a new asset folder, sorted like
   *Settings → File types* (`fbx/`, `textures/`, `render/` …). A thumbnail or render picture dropped along comes too.
@@ -131,6 +131,8 @@ again in *Settings → Programs*.
   scroll to zoom, *Wire* shows the mesh.
 - **Every model:** It shows the model ticked in *Files*; a list in the view holds all variations and LODs.
   A plant's USD shows all its variations in a row, or one chosen in the list.
+- **In the quick preview too:** Space opens the quick preview, *3* switches between the picture and the model,
+  Space closes it again.
 
 ### Send to Houdini, Blender and Maya
 
@@ -215,7 +217,8 @@ Ctrl on Windows and Linux, ⌘ on the Mac. `?` shows every shortcut in the app.
 | Shortcut | Action |
 |---|---|
 | Click / ↩ | Open the details panel |
-| Space | Quick preview |
+| Space | Quick preview (Space again closes it) |
+| 3 | Picture / 3D model in the quick preview |
 | Ctrl+K | Search everything |
 | Ctrl+F | Filter the view |
 | Ctrl+D | Favourite on/off |
