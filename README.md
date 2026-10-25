@@ -72,7 +72,7 @@ Everything else can be set later in the settings (Ctrl+, or ⌘,).
 
 ## Updates
 
-MAM looks for a new version when it starts. *Update* downloads and checks it, *Restart now* swaps it in and starts
+MAM looks for a new version when it starts. After an update it shows once what is new. *Update* downloads and checks it, *Restart now* swaps it in and starts
 again. Settings, library and projects stay as they are. If the Houdini, Blender or Maya addon changed, install it
 again in *Settings → Programs*.
 
@@ -84,8 +84,12 @@ again in *Settings → Programs*.
   subcategories. MAM only adds a small `metadata.json` with the tags.
 - **Drives by name:** Folders on other drives (projects, Megascans, Fab, boards) are kept by the drive's name, so
   they open on Mac (`/Volumes/<name>`), Windows (the drive's label) and Linux (`/media/<user>/<name>`) alike.
-- **Settings to another computer:** *Settings → Programs → Export settings* writes everything set into a file;
+- **Settings to another computer:** *Settings → Programs → Export settings* writes everything set – with the
+  categories, their icons and the file types – into a file;
   *Import settings* takes it over on another computer. The cloud secret key stays in the keychain.
+- **Sync both ways:** *Sync both ways* keeps the library and a second drive (a laptop and the NAS) in step. For
+  a file deleted on one side you choose whether it goes on the other side too or comes back.
+- **Export a copy:** Right click → *Export copy* copies assets into any folder; the library stays as it is.
 - **Several paths:** The same library can be entered under different drive letters or mounts (e.g. `Z:\01_Assets`
   and `/Volumes/nas/01_Assets`). MAM uses the first path that is reachable on this computer.
 - **Fast on a NAS too:** The window opens at once, the library is brought up to date in the background. What has
@@ -136,7 +140,7 @@ again in *Settings → Programs*.
   each map by its file name (albedo, normal, roughness, metallic, displacement, opacity, AO …). Specular and
   cavity maps set how much the material reflects; a bump map can be added on top of the normal map (Settings).
 - **Choice of renderer:**
-  - Houdini: Karma (MaterialX) or Redshift
+  - Houdini: Karma (MaterialX), Redshift or RenderMan (PxrSurface or Lama)
   - Maya: Arnold or Redshift
   - Blender: Cycles / EEVEE
 - **Several materials:** If a model comes with several texture sets, each becomes a material of its own on its
@@ -148,6 +152,9 @@ again in *Settings → Programs*.
 - **HDAs:** Houdini Digital Assets show their type, context and version and are installed and created as a node
   when sent. On request, every HDA of the library is right in Houdini's Tab menu.
 - **Gobos:** Light templates are sent as a projecting spotlight, also as an animated image sequence.
+- **IES lights:** Light profiles (.ies) in an *IES* category show their light on a wall and are sent as a light
+  shaped by the profile (Houdini, Maya with Arnold or Redshift, Blender).
+- **Maya scenes:** A .ma/.mb comes into Maya as a reference or imported.
 - **USD assets:** *Files → USD asset* turns an asset into a self-contained USD with a MaterialX material, LOD and
   variant sets and a light proxy for the viewport. For plants, the ticked variations go into one USD; sent to
   Houdini, every variation stands side by side as a prim of its own.
@@ -164,7 +171,8 @@ again in *Settings → Programs*.
 - **Fab:** Downloads from Fab are in the same section. Megascans assets from Fab are sorted in like those from
   Bridge, assets of other sellers are under *Fab*. The grey background of Fab pictures is cut out; a download
   without a preview gets its picture from fab.com.
-- **Poly Haven and ambientCG:** Both free catalogues (HDRIs, textures, models, all CC0) can be browsed.
+- **Poly Haven and ambientCG:** Both free catalogues (HDRIs, textures, models, all CC0) can be browsed; HDRIs come
+  as HDR, EXR or both.
   *Download* saves into a folder of their own, and further resolutions are added instead of replacing the one
   before. Under *Files* you tick which maps you want.
 - **Take over:** *Copy to my library* copies an asset from these sections into your own library.
